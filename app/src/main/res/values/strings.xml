@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MugikirolApp_Android</string>
+    <string name="app_name">MugikirolApp</string>
+    <string name="Usuario">Usuario: </string>
+    <string name="Contraseña">Contraseña: </string>
+    <string name="errorlogin">Usuario o contraseña no validos</string>
+    <string name="Bienvenida">Bienvenido a MugikirolAp</string>
+    <string name="deportes">Hockey;Basket;Balonmano;Volley</string>
 </resources>
