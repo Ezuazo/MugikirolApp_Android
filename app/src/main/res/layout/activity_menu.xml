@@ -7,12 +7,43 @@
     tools:context="eus.ehu.tta.mugikirolapp_android.MenuActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textoprueba"
+    <Button
+        android:id="@+id/sabes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="De prueba"
+        android:text="¿Cuanto sabes?"
+        android:onClick="gotoTest"/>
         />
+    <Button
+        android:id="@+id/reglas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reglas"
+        android:onClick="gotoReglas"/>
+    <Button
+        android:id="@+id/lexico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Léxico"
+        android:onClick="gotoLexico"/>
+    <Button
+        android:id="@+id/estrategia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estrategia"
+        android:onClick="gotoEstrategia"/>
+    <Button
+        android:id="@+id/repaso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Respaso"
+        android:onClick="gotoTest"/>
+
+    <ImageView
+        android:id="@+id/gif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_delete" />
 
 
 </LinearLayout>

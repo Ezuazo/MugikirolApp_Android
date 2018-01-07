@@ -5,4 +5,5 @@
     <string name="errorlogin">Usuario o contraseña no validos</string>
     <string name="Bienvenida">Bienvenido a MugikirolAp</string>
     <string name="deportes">Hockey;Basket;Balonmano;Volley</string>
+    <string name="errorfunction">Funcion no definida aun</string>
 </resources>
