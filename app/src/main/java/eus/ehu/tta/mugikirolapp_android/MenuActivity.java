@@ -53,12 +53,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void gotoReglas(View view){
-        /*int i = Integer.parseInt(view.getTag().toString());
-        Intent intent = new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_SPORTID, i);
-        startActivity(intent);*/
+        Intent intent = new Intent(this,ReglasActivity.class);
+        intent.putExtra(MenuActivity.EXTRA_SPORTID, num);
+        startActivity(intent);
 
-        Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
     }
 
     public void gotoLexico(View view){
