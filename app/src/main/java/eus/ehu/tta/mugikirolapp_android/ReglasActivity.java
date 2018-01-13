@@ -25,7 +25,6 @@ public class ReglasActivity extends AppCompatActivity {
         WebView video = (WebView)findViewById(R.id.reglasvideo);
         WebSettings setins = video.getSettings();
         setins.setJavaScriptEnabled(true);
-        video.loadData("<iframe src=\"https://youtube.com/embed/vdYAx6kf-78\"></iframe>","text/HTML",null);
 
         switch (num) {
             case 0:

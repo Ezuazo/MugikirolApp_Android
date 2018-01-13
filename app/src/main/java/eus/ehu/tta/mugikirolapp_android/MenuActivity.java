@@ -68,12 +68,9 @@ public class MenuActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
     }
     public void gotoEstrategia(View view){
-        /*int i = Integer.parseInt(view.getTag().toString());
-        Intent intent = new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_SPORTID, i);
-        startActivity(intent);*/
-
-        Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,EstrategiaActivity.class);
+        intent.putExtra(EstrategiaActivity.EXTRA_SPORTID, num);
+        startActivity(intent);
     }
 
 }
