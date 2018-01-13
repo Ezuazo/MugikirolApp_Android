@@ -25,24 +25,23 @@ public class ReglasActivity extends AppCompatActivity {
         WebView video = (WebView)findViewById(R.id.reglasvideo);
         WebSettings setins = video.getSettings();
         setins.setJavaScriptEnabled(true);
-        video.loadData("<iframe src=\"https://www.youtube.com/embed/b89CnP0Iq30\"></iframe>","text/HTML",null);
-        video.setBackgroundColor(Color.TRANSPARENT);
+        video.loadData("<iframe src=\"https://youtube.com/embed/vdYAx6kf-78\"></iframe>","text/HTML",null);
 
-
-
-/*        switch (num) {
+        switch (num) {
             case 0:
-                gif.setImageResource(R.drawable.hockey);
+                video.loadData("<iframe src=\"https://youtube.com/embed/vdYAx6kf-78\"></iframe>","text/HTML",null);
                 break;
             case 1:
-                gif.setImageResource(R.drawable.baloncesto);
+                video.loadData("<iframe src=\"https://youtube.com/embed/Vwfxbpq0N2o\"></iframe>","text/HTML",null);
                 break;
             case 2:
-                gif.setImageResource(R.drawable.balonmano);
+                video.loadData("<iframe src=\"https://youtube.com/embed/Xn4YGyWIQp8\"></iframe>","text/HTML",null);
                 break;
             case 3:
-                gif.setImageResource(R.drawable.volleyball);
+                video.loadData("<iframe src=\"https://youtube.com/embed/OOIW4buBOfs\"></iframe>","text/HTML",null);
                 break;
-        }*/
+        }
+
+        video.setBackgroundColor(Color.TRANSPARENT);
     }
 }
