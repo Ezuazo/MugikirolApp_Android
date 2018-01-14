@@ -3,9 +3,9 @@
     package="eus.ehu.tta.mugikirolapp_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +24,8 @@
         <activity android:name=".SportsActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".ReglasActivity" />
-        <activity android:name=".EstrategiaActivity"></activity>
+        <activity android:name=".EstrategiaActivity" />
+        <activity android:name=".LexicoActivity"></activity>
     </application>
 
 </manifest>

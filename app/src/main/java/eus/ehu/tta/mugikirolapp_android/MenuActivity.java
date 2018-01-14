@@ -44,9 +44,9 @@ public class MenuActivity extends AppCompatActivity {
 
 
     public void gotoTest(View view){
-        /*int i = Integer.parseInt(view.getTag().toString());
+        /*
         Intent intent = new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_SPORTID, i);
+        intent.putExtra(MenuActivity.EXTRA_SPORTID, num);
         startActivity(intent);*/
 
         Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
@@ -60,12 +60,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void gotoLexico(View view){
-        /*int i = Integer.parseInt(view.getTag().toString());
-        Intent intent = new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_SPORTID, i);
-        startActivity(intent);*/
-
-        Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,LexicoActivity.class);
+        intent.putExtra(LexicoActivity.EXTRA_SPORTID, num);
+        startActivity(intent);
     }
     public void gotoEstrategia(View view){
         Intent intent = new Intent(this,EstrategiaActivity.class);

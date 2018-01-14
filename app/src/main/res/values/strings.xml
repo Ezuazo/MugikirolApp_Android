@@ -6,4 +6,12 @@
     <string name="Bienvenida">Bienvenido a MugikirolAp</string>
     <string name="deportes">Hockey;Basket;Balonmano;Volley</string>
     <string name="errorfunction">Funcion no definida aun</string>
+    <string name="defhockey">Implemento de madera de forma alargada y curvo al final que cada jugador lleva para jugar la bola.;Elemento esférico que es usado para realizar el push, el flick, el scoop, driblar, etc...;Estructura rectangular que se coloca en las líneas de  fondo del campo y donde los jugadores deben enviar la bola para conseguir marcar goles;Cuando el jugador desplaza la bola por el suelo mediante un movimiento de empuje del stick.</string>
+    <string name="palhockey">Stick;Bola;Porteria;Push</string>
+    <string name="defbasket">Sanción que se impone cuando un jugador es víctima de una falta en el momento del lanzamiento;Cuando un jugador protege a un compañero de su adversario particular en una fase ofensiva.;Acción de capturar el balón después de un tiro fallido y antes de que toque el suelo.;Es una acción de juego que consiste enmarcar colgándose del aro, con una o dos manos.</string>
+    <string name="palbasket">Tiro libre,Bloqueo,Rebote,Mate</string>
+    <string name="defvolley">Acción de ataque realizada por los delanteros. Consiste en golpear el balón describiendo una trayectoria descendente;Movimiento de translación de los jugadores después de cada recuperación de servicio, siguiendo el sentido de las agujas del reloj;Varas situadas en la red, que delimitan el espacio aéreo de juego del balón;Acción técnica que consiste en llegar a balones muy difíciles a través de lanzarse hacia ellos y luego deslizarse.</string>
+    <string name="palvolley">Remate;Rotación;Varillas;Plancha</string>
+    <string name="defbalonmano">Posición del jugador que juega justo en la frontal del área, generalmente de espaldas a la portería para poder ver a sus compañeros y recibir el balón con mayor comodidad;Sanción máxima que se aplica al equipo defensor por impedir de manera antirreglamentaria la culminación de una ocasión manifiesta de gol. Consiste en la realización de un lanzamiento desde la línea de 7 metros;Infracción consistente en que un jugador posea el balón, lo bote, lo vuelva a coger y lo vuelva a botar;Se producen cuando el jugador que posee la pelota realiza más de cuatro apoyos consecutivos sin botar la pelota (lo cual implica un máximo de tres pasos).</string>
+    <string name="palbalonmano">Pivote;Penalti;Dobles;Pasos</string>
 </resources>
