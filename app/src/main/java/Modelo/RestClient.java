@@ -72,7 +72,7 @@ public class RestClient {
         return new JSONObject(getString(path));
     }
 
-    public int postJson ( final JSONObject json, String path ) throws IOException {
+    public String postJson ( final JSONObject json, String path ) throws IOException {
         System.out.println("PostJson");
         HttpURLConnection conn = null;
         try {
@@ -82,7 +82,12 @@ public class RestClient {
             PrintWriter pw = new PrintWriter(conn.getOutputStream());
             pw.print(json.toString());
             pw.close();
-            return conn.getResponseCode();
+            if(conn.getInputStream()!=null) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                return br.readLine();
+            }else {
+                return Integer.toString(conn.getResponseCode());
+            }
         } finally {
             if(conn != null){
                 conn.disconnect();

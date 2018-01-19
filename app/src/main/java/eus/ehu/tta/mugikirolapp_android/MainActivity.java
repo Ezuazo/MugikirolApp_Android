@@ -26,31 +26,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-        Intent intent = new Intent(this,SportsActivity.class);
-        user.setLogin(((EditText)findViewById(R.id.login)).getText().toString());
-        user.setPassword(((EditText)findViewById(R.id.passwd)).getText().toString());
-        user.setName(user.getLogin()+":mugikirolapp");
-
-        if (authenticate(user.getLogin(),user.getPassword())){
-            intent.putExtra(SportsActivity.EXTRA_USER, user);
-            startActivity(intent);
-        }else {
-            Toast.makeText(getApplicationContext(),R.string.errorlogin,Toast.LENGTH_SHORT).show();
-        }
+        rellenarUsuario();
+        authenticate();
     }
 
-    private boolean authenticate(String login, String password){
+    private void authenticate(){
 
-        //Aqui habria que checkear con el servidor
-        return true;
+
+        new ProgessTask<Boolean>(this){
+            @Override
+            protected Boolean work() throws Exception{
+
+                return server.logIn(user);
+            }
+
+            @Override
+            protected void onFinish(Boolean correct) {
+
+                if(correct) {
+                    Intent intent = new Intent(this.context, SportsActivity.class);
+                    rellenarUsuario();
+                    intent.putExtra(SportsActivity.EXTRA_USER, user);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(),R.string.errorlogin,Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }.execute();
+
+
     }
 
     public void register (View view){
 System.out.println("Register");
-        user.setLogin(((TextView)findViewById(R.id.login)).getText().toString());
-        user.setPassword(((TextView)findViewById(R.id.passwd)).getText().toString());
-        user.setName(user.getLogin()+":mugikirolapp");
 
+        rellenarUsuario();
         new ProgessTask<Void>(this){
             @Override
             protected Void work() throws Exception{
@@ -67,5 +78,11 @@ System.out.println("Register");
 
         }.execute();
 
+    }
+
+    public void rellenarUsuario (){
+        user.setLogin(((TextView)findViewById(R.id.login)).getText().toString());
+        user.setPassword(((TextView)findViewById(R.id.passwd)).getText().toString());
+        user.setName(user.getLogin()+":mugikirolapp");
     }
 }

@@ -26,7 +26,30 @@ public class Servidor implements ServidorInterface {
             System.out.println("Error al rellenar el usuario");
         }
 
-        int code = client.postJson(userJson,"addUser");
+        String code = client.postJson(userJson,"addUser");
         System.out.println(code);
+    }
+
+    @Override
+    public boolean logIn(Usuario user) throws IOException {
+        System.out.println("logIn");
+        client = new RestClient(baseUrl);
+        JSONObject userJson= new JSONObject();
+        try {
+            userJson.put("login",user.getLogin());
+            userJson.put("name",user.getName());
+            userJson.put("password",user.getPassword());
+        } catch (JSONException e) {
+            System.out.println("Error al rellenar el usuario");
+        }
+
+        String respuesta = client.postJson(userJson,"logIn");
+        System.out.println(respuesta);
+        if(respuesta.equals("Nok")){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }
