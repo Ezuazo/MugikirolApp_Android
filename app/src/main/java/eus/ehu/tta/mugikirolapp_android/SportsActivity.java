@@ -7,14 +7,19 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import Modelo.Usuario;
+
 public class SportsActivity extends AppCompatActivity {
 
-    public static final String EXTRA_LOGIN = "login";
+    public static final String EXTRA_USER = "user";
+    Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports);
+        Intent intent = getIntent();
+        user = (Usuario)intent.getSerializableExtra(EXTRA_USER);
     }
 
     public void gotoSport(View view){
