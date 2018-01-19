@@ -52,4 +52,12 @@ public class Servidor implements ServidorInterface {
             return true;
         }
     }
+
+    @Override
+    public String stats() throws IOException {
+        System.out.println("Stats");
+        client = new RestClient(baseUrl);
+        String respuesta = client.getString("stats");
+        return respuesta;
+    }
 }

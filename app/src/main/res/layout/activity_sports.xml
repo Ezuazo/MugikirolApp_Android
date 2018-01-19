@@ -56,4 +56,10 @@
         android:text="Ver actividades"
         android:onClick="seeActivities"/>
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 </LinearLayout>
