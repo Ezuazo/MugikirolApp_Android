@@ -14,4 +14,10 @@
     <string name="palvolley">Remate;Rotación;Varillas;Plancha</string>
     <string name="defbalonmano">Posición del jugador que juega justo en la frontal del área, generalmente de espaldas a la portería para poder ver a sus compañeros y recibir el balón con mayor comodidad;Sanción máxima que se aplica al equipo defensor por impedir de manera antirreglamentaria la culminación de una ocasión manifiesta de gol. Consiste en la realización de un lanzamiento desde la línea de 7 metros;Infracción consistente en que un jugador posea el balón, lo bote, lo vuelva a coger y lo vuelva a botar;Se producen cuando el jugador que posee la pelota realiza más de cuatro apoyos consecutivos sin botar la pelota (lo cual implica un máximo de tres pasos).</string>
     <string name="palbalonmano">Pivote;Penalti;Dobles;Pasos</string>
+    <string-array name="opciones">
+        <item>Hockey</item>
+        <item>Baloncesto</item>
+        <item>Balonmano</item>
+        <item>Volley</item>
+    </string-array>
 </resources>

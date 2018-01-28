@@ -1,10 +1,16 @@
 package eus.ehu.tta.mugikirolapp_android;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,12 +19,14 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import Modelo.Actividad;
 import Modelo.ProgessTask;
 import Modelo.Servidor;
 import Modelo.Usuario;
@@ -28,6 +36,11 @@ public class SportsActivity extends AppCompatActivity  {
     public static final String EXTRA_USER = "user";
     Usuario user;
     Servidor server;
+    DatePicker begin;
+    DatePicker end;
+    Spinner sport;
+    Actividad activity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +49,7 @@ public class SportsActivity extends AppCompatActivity  {
         Intent intent = getIntent();
         user = (Usuario) intent.getSerializableExtra(EXTRA_USER);
         server = new Servidor();
+        activity = new Actividad();
     }
 
     public void gotoSport(View view) {
@@ -46,8 +60,42 @@ public class SportsActivity extends AppCompatActivity  {
 
     }
 
+
     public void addActivity(View view) {
-        Toast.makeText(getApplicationContext(), R.string.errorlogin, Toast.LENGTH_SHORT).show();
+        LayoutInflater layourinflater = LayoutInflater.from(this);
+        View mView = layourinflater.inflate(R.layout.formulario,null);
+        AlertDialog.Builder alertdialog = new AlertDialog.Builder(this);
+        alertdialog.setView(mView);
+
+        AlertDialog dialog = alertdialog.create();
+
+        Switch switchButton = (Switch)mView.findViewById(R.id.simpleSwitch);
+        begin = (DatePicker)mView.findViewById(R.id.begindate);
+        end = (DatePicker)mView.findViewById(R.id.enddate);
+        sport = (Spinner) mView.findViewById(R.id.spinneropcs);
+        final TextView texto = (TextView)mView.findViewById(R.id.escogefecha);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                System.out.println("OncheckedChanged");
+                if (isChecked) {
+                    begin.setVisibility(View.GONE);
+                    end.setVisibility(View.VISIBLE);
+                    texto.setText("Escoge la fecha de fin");
+
+                }
+                else {
+                    end.setVisibility(View.GONE);
+                    begin.setVisibility(View.VISIBLE);
+                    texto.setText("Escoge la fecha de inicio");
+                }
+
+            }
+        });
+
+        dialog.show();
 
     }
 
@@ -97,6 +145,53 @@ public class SportsActivity extends AppCompatActivity  {
             }
 
         }.execute();
+    }
+
+    public void sendActivity(View view){
+
+        String inicio = Integer.toString(begin.getYear());
+        inicio = formatearFecha(inicio,begin.getMonth()+1);
+        inicio = formatearFecha(inicio,begin.getDayOfMonth());
+
+        String fin = Integer.toString(end.getYear());
+        fin = formatearFecha(fin,end.getMonth()+1);
+        fin = formatearFecha(fin,end.getDayOfMonth());
+
+
+        activity.setSport(getResources().getStringArray(R.array.opciones)[sport.getSelectedItemPosition()]);
+        activity.setBegindate(inicio);
+        activity.setEnddate(fin);
+        activity.setUserid(user.getId());
+
+
+        new ProgessTask<Void>(this){
+            @Override
+            protected Void work() throws Exception{
+
+                server.newActivity(activity);
+                return null;
+            }
+
+            @Override
+            protected void onFinish(Void user) {
+                Toast.makeText(getApplicationContext(),"Actividad añadida",Toast.LENGTH_SHORT).show();
+
+            }
+
+        }.execute();
+
+
+    }
+
+    public String formatearFecha(String actual, int valor){
+        if (valor < 10){
+            actual = actual+"0"+Integer.toString(valor);
+        }
+        else
+        {
+            actual= actual+Integer.toString(valor);
+        }
+        return actual;
     }
 
 }

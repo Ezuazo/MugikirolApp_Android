@@ -25,7 +25,7 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".ReglasActivity" />
         <activity android:name=".EstrategiaActivity" />
-        <activity android:name=".LexicoActivity"></activity>
+        <activity android:name=".LexicoActivity" />
     </application>
 
 </manifest>

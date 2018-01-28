@@ -31,7 +31,7 @@ public class Servidor implements ServidorInterface {
     }
 
     @Override
-    public boolean logIn(Usuario user) throws IOException {
+    public String logIn(Usuario user) throws IOException {
         System.out.println("logIn");
         client = new RestClient(baseUrl);
         JSONObject userJson= new JSONObject();
@@ -45,12 +45,7 @@ public class Servidor implements ServidorInterface {
 
         String respuesta = client.postJson(userJson,"logIn");
         System.out.println(respuesta);
-        if(respuesta.equals("Nok")){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return respuesta;
     }
 
     @Override
@@ -59,5 +54,23 @@ public class Servidor implements ServidorInterface {
         client = new RestClient(baseUrl);
         String respuesta = client.getString("stats");
         return respuesta;
+    }
+
+    @Override
+    public void newActivity(Actividad activity) throws IOException {
+        System.out.println("newActivity");
+        client = new RestClient(baseUrl);
+        JSONObject activityJSON = new JSONObject();
+        try {
+            activityJSON.put("begindate",Integer.parseInt(activity.getBegindate()));
+            activityJSON.put("enddate",Integer.parseInt(activity.getEnddate()));
+            activityJSON.put("user",activity.getUserid());
+            activityJSON.put("sport",activity.getSport());
+        } catch (JSONException e) {
+            System.out.println("No se ha podido crear el objeto JSON");
+        }
+        String code = client.postJson(activityJSON,"newActivity");
+        System.out.println(code);
+
     }
 }

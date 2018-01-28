@@ -33,19 +33,20 @@ public class MainActivity extends AppCompatActivity {
     private void authenticate(){
 
 
-        new ProgessTask<Boolean>(this){
+        new ProgessTask<String>(this){
             @Override
-            protected Boolean work() throws Exception{
+            protected String work() throws Exception{
 
                 return server.logIn(user);
             }
 
             @Override
-            protected void onFinish(Boolean correct) {
+            protected void onFinish(String iduser) {
 
-                if(correct) {
+                if(!iduser.equals("Nok")) {
                     Intent intent = new Intent(this.context, SportsActivity.class);
                     rellenarUsuario();
+                    user.setId(Integer.parseInt(iduser));
                     intent.putExtra(SportsActivity.EXTRA_USER, user);
                     startActivity(intent);
                 }else {
