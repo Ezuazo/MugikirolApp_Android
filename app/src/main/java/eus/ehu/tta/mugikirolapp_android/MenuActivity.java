@@ -44,12 +44,11 @@ public class MenuActivity extends AppCompatActivity {
 
 
     public void gotoTest(View view){
-        /*
-        Intent intent = new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_SPORTID, num);
-        startActivity(intent);*/
-
-        Toast.makeText(getApplicationContext(),R.string.errorfunction,Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,TestActivity.class);
+        intent.putExtra(TestActivity.EXTRA_SPORTID, num);
+        intent.putExtra(TestActivity.EXTRA_NUMPREG, 0);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
     public void gotoReglas(View view){

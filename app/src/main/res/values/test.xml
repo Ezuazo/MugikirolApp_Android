@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preguntas">
+        <item>@array/Hockey_p</item>
+        <item>@array/Basket_p</item>
+        <item>@array/Balonmano_p</item>
+        <item>@array/Volley_p</item>
+    </array>
+
+    <string-array name ="Hockey_p">
+        <item>La cancha de hockey a lo largo debe de estar entre ... y ... metros.</item>
+        <item>La cancha de hockey a la ancho tiene que tener un mínimo de ... metros.</item>
+        <item>El área de la cancha de de hockey tiene ... metros de largo.</item>
+    </string-array>
+    <string-array name = "Basket_p">
+        <item>¿Cuántos jugadores participan en un partido de baloncesto?</item>
+        <item>¿Cuando un jugador bota el balón, lo coge y lo vuelve a botar. ¿Qué pita el arbitro?</item>
+        <item>¿Cuántos puntos valen las canastas en juego?</item>
+    </string-array>
+    <string-array name = "Volley_p">
+        <item>En el voleibol el área de juego incluye...</item>
+        <item>La cancha de juego en voleibol tiene unas dimensiones de...</item>
+        <item>¿Cuál de las siguientes afirmaciones sobre el voleibol es la correcta?</item>
+    </string-array>
+    <string-array name = "Balonmano_p">
+        <item>Jugando el balón no se permite...</item>
+        <item>Jugando el balón se permiten dar un máximo de.....pasos.</item>
+        <item>Jugando el balón, con el balón en las manos, se considera un paso cuando...</item>
+    </string-array>
+
+
+    <array name="correctas">
+        <item>@array/hockey_c</item>
+        <item>@array/basket_c</item>
+        <item>@array/balonmano_c</item>
+        <item>@array/volley_c</item>
+    </array>
+
+    <integer-array name="hockey_c">
+        <item>0</item>
+        <item>2</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="basket_c">
+        <item>2</item>
+        <item>2</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="balonmano_c">
+        <item>2</item>
+        <item>3</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="volley_c">
+        <item>1</item>
+        <item>0</item>
+        <item>2</item>
+    </integer-array>
+
+    <array name="respuestas">
+        <item>@array/Hockey_r</item>
+        <item>@array/Basket_r</item>
+        <item>@array/Balonmano_r</item>
+        <item>@array/Volley_r</item>
+    </array>
+
+    <array name="Hockey_r">
+        <item>@array/H1</item>
+        <item>@array/H2</item>
+        <item>@array/H3</item>
+    </array>
+
+    <string-array name="H1">
+        <item>A: 36/44.</item>
+        <item>B: 30/40.</item>
+        <item>C: 25/50.</item>
+        <item>D: 35/55.</item>
+    </string-array>
+
+    <string-array name="H2">
+        <item>A: 15.</item>
+        <item>B: 25.</item>
+        <item>C: 18.</item>
+        <item>D: 20.</item>
+    </string-array>
+
+    <string-array name="H3">
+        <item>A: 3.</item>
+        <item>B: 4.</item>
+        <item>C: 6.</item>
+        <item>D: 2.</item>
+    </string-array>
+
+    <array name="Basket_r">
+        <item>@array/B1</item>
+        <item>@array/B2</item>
+        <item>@array/B3</item>
+    </array>
+
+    <string-array name="B1">
+        <item>A: 8 jugadores.</item>
+        <item>B: 11 jugadores.</item>
+        <item>C: 10 jugadores.</item>
+        <item>D: 6 jugadores.</item>
+    </string-array>
+
+    <string-array name="B2">
+        <item>A: Nada.</item>
+        <item>B: Canasta.</item>
+        <item>C: Dobles.</item>
+        <item>D: Pasos.</item>
+    </string-array>
+
+    <string-array name="B3">
+        <item>A: 2 puntos.</item>
+        <item>B: 4 puntos.</item>
+        <item>C: 1 punto.</item>
+        <item>D: 5 puntos.</item>
+    </string-array>
+
+    <array name="Volley_r">
+        <item>@array/V1</item>
+        <item>@array/V2</item>
+        <item>@array/V3</item>
+    </array>
+
+    <string-array name="V1">
+        <item>A: Cancha de juego, zona libre y banquillos.</item>
+        <item>B: Cancha de juego.</item>
+        <item>C: Cancha de juego y zona libre.</item>
+        <item>D: Ninguna de las anteriores respuestas es correcta.</item>
+    </string-array>
+
+    <string-array name="V2">
+        <item>A: 22X9 metros.</item>
+        <item>B: 16X8 metros.</item>
+        <item>C: 14X9 metros.</item>
+        <item>D: 18X9 metros.</item>
+    </string-array>
+
+    <string-array name="V3">
+        <item>A: La zona libre debe tener un mínimo de 2 metros por cada lado.</item>
+        <item>B: En canchas cubiertas la superficie de juego debe de ser de color claro.</item>
+        <item>C: El área de juego debe de ser cuadrada y simétrica.</item>
+        <item>D: La superficie de la pista debe de ser plana, horizontal y resbaladiza.</item>
+    </string-array>
+
+    <array name="Balonmano_r">
+        <item>@array/Ba1</item>
+        <item>@array/Ba2</item>
+        <item>@array/Ba3</item>
+    </array>
+
+    <string-array name="Ba1">
+        <item>A: Golpear el balón usando las manos cerradas.</item>
+        <item>B: Tener el balón más de 3 segundos.</item>
+        <item>C: Detenerlo con los muslos.</item>
+        <item>D: Detenerlo con las rodillas.</item>
+    </string-array>
+
+    <string-array name="Ba2">
+        <item>A: 3.</item>
+        <item>B: 2.</item>
+        <item>C: 4.</item>
+        <item>D: 5.</item>
+    </string-array>
+
+    <string-array name="Ba3">
+        <item>A: Un jugador en suspensión toca el suelo con los dos pies y vuelve a saltar sobre los dos pies, o toca el suelo con el pie izquierdo.</item>
+        <item>B: Un jugador con dos pies en el suelo, recepciona el balón y toca a continuación el suelo con otro pie.</item>
+        <item>C: Un jugador con los dos pies en contacto con el suelo, levanta uno y lo vuelve a colocar en el suelo, levanta o desplaza uno.</item>
+        <item>D: Un jugador en suspensión toca el suelo con los dos pies a diferentes tiempos y levanta un pie y lo vuelve a colocar en el suelo.</item>
+    </string-array>
+</resources>
+
