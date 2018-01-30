@@ -2,6 +2,7 @@ package Modelo;
 
 import android.util.Base64;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -93,6 +94,29 @@ public class RestClient {
                 conn.disconnect();
             }
         }
+    }
+
+    public JSONObject postGetJson (final JSONObject json, String path ) throws IOException, JSONException {
+        System.out.println("PostJson");
+        HttpURLConnection conn = null;
+        JSONObject arrayJSON;
+        try {
+            conn = getConnection(path);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+            PrintWriter pw = new PrintWriter(conn.getOutputStream());
+            pw.print(json.toString());
+            pw.close();
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            arrayJSON = new JSONObject(br.readLine());
+
+        } finally {
+            if(conn != null){
+
+                conn.disconnect();
+            }
+        }
+        return arrayJSON;
     }
 }
 

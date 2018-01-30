@@ -50,16 +50,63 @@
         android:layout_height="wrap_content"
         android:text="Añadir actividad"
         android:onClick="addActivity"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:stretchMode="columnWidth">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver actividades"
-        android:onClick="seeActivities"/>
-
+        android:text="Ver mis actividades"
+        android:onClick="seeMyActivities"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver todas"
+            android:onClick="seeActivities"
+            android:layout_gravity="right"/>
+    </GridLayout>
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/piechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
+
+    <GridLayout
+        android:id="@+id/tabla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="gone"
+        android:paddingTop="15dp">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textSize="14dp"
+            android:text="Fecha incio"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="65dp"
+            android:textSize="14dp"
+            android:text="Fecha fin"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textSize="14dp"
+            android:text="Deporte"/>
+
+
+
+    </GridLayout>
 
 </LinearLayout>

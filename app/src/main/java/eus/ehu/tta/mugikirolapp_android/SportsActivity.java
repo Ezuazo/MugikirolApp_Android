@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -25,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Modelo.Actividad;
 import Modelo.ProgessTask;
@@ -111,6 +115,7 @@ public class SportsActivity extends AppCompatActivity  {
             @Override
             protected void onFinish(String stats) {
 
+                findViewById(R.id.tabla).setVisibility(View.GONE);
                 String[] porcentajes = stats.split(",");
                 PieChart pieChart = (PieChart) findViewById(R.id.piechart);
 
@@ -183,6 +188,109 @@ public class SportsActivity extends AppCompatActivity  {
 
     }
 
+    public void seeMyActivities (View view) {
+
+
+        LayoutInflater layourinflater = LayoutInflater.from(this);
+        View mView = layourinflater.inflate(R.layout.formulario, null);
+        AlertDialog.Builder alertdialog = new AlertDialog.Builder(this);
+        alertdialog.setView(mView);
+
+        AlertDialog dialog = alertdialog.create();
+
+        mView.findViewById(R.id.texto_escoger).setVisibility(View.GONE);
+        mView.findViewById(R.id.spinneropcs).setVisibility(View.GONE);
+        mView.findViewById(R.id.submitbuton).setVisibility(View.GONE);
+        mView.findViewById(R.id.statsByDate_button).setVisibility(View.VISIBLE);
+
+        Switch switchButton = (Switch) mView.findViewById(R.id.simpleSwitch);
+        begin = (DatePicker) mView.findViewById(R.id.begindate);
+        end = (DatePicker) mView.findViewById(R.id.enddate);
+        sport = (Spinner) mView.findViewById(R.id.spinneropcs);
+        final TextView texto = (TextView) mView.findViewById(R.id.escogefecha);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                System.out.println("OncheckedChanged");
+                if (isChecked) {
+                    begin.setVisibility(View.GONE);
+                    end.setVisibility(View.VISIBLE);
+                    texto.setText("Escoge la fecha de fin");
+
+                } else {
+                    end.setVisibility(View.GONE);
+                    begin.setVisibility(View.VISIBLE);
+                    texto.setText("Escoge la fecha de inicio");
+                }
+
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    public void statsByDate(View view){
+
+
+        String inicio = Integer.toString(begin.getYear());
+        inicio = formatearFecha(inicio,begin.getMonth()+1);
+        inicio = formatearFecha(inicio,begin.getDayOfMonth());
+
+        String fin = Integer.toString(end.getYear());
+        fin = formatearFecha(fin,end.getMonth()+1);
+        fin = formatearFecha(fin,end.getDayOfMonth());
+
+
+        activity.setSport(getResources().getStringArray(R.array.opciones)[sport.getSelectedItemPosition()]);
+        activity.setBegindate(inicio);
+        activity.setEnddate(fin);
+        activity.setUserid(user.getId());
+
+        new ProgessTask<List<Actividad>>(this){
+            @Override
+            protected List<Actividad> work() throws Exception{
+
+                return server.statsByDate(activity);
+
+            }
+
+            @Override
+            protected void onFinish(List<Actividad> actividades) {
+                findViewById(R.id.piechart).setVisibility(View.GONE);
+                ViewGroup layout = (ViewGroup) findViewById(R.id.tabla);
+
+                for (int i = 0 ; i<actividades.size(); i++){
+
+                    TextView inicio = new TextView(context);
+                    TextView fin = new TextView(context);
+                    TextView deporte = new TextView(context);
+
+                    inicio.setText(corregirFecha(actividades.get(i).getBegindate()));
+                    inicio.setGravity(Gravity.START);
+                    fin.setText(corregirFecha(actividades.get(i).getEnddate()));
+                    fin.setPadding(85,0,0,0);
+                    deporte.setText(actividades.get(i).getSport());
+                    deporte.setGravity(Gravity.END);
+
+                    layout.addView(inicio);
+                    layout.addView(fin);
+                    layout.addView(deporte);
+                }
+
+                findViewById(R.id.tabla).setVisibility(View.VISIBLE);
+
+
+            }
+
+        }.execute();
+
+
+
+
+
+    }
+
     public String formatearFecha(String actual, int valor){
         if (valor < 10){
             actual = actual+"0"+Integer.toString(valor);
@@ -194,4 +302,8 @@ public class SportsActivity extends AppCompatActivity  {
         return actual;
     }
 
+    public String corregirFecha (String fecha){
+
+        return fecha.substring(6,8)+"/"+fecha.substring(4,6)+"/"+fecha.substring(0,4);
+    }
 }

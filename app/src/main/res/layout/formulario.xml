@@ -10,9 +10,19 @@
     >
 
     <TextView
+        android:id="@+id/texto_escoger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Escoge el deporte"
+        />
+    <Button
+        android:id="@+id/statsByDate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:visibility="gone"
+        android:text="Enviar"
+        android:onClick="statsByDate"
         />
     <GridLayout
         android:layout_width="match_parent"

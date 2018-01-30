@@ -1,9 +1,12 @@
 package Modelo;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by endika on 19/01/18.
@@ -72,5 +75,38 @@ public class Servidor implements ServidorInterface {
         String code = client.postJson(activityJSON,"newActivity");
         System.out.println(code);
 
+    }
+
+    @Override
+    public List<Actividad> statsByDate(Actividad activity) throws IOException, JSONException {
+        System.out.println("newActivity");
+        client = new RestClient(baseUrl);
+        JSONObject activityJSON = new JSONObject();
+        List<Actividad> actividades = new ArrayList<Actividad>();
+        try {
+            activityJSON.put("begindate",Integer.parseInt(activity.getBegindate()));
+            activityJSON.put("enddate",Integer.parseInt(activity.getEnddate()));
+            activityJSON.put("user",activity.getUserid());
+            activityJSON.put("sport",activity.getSport());
+        } catch (JSONException e) {
+            System.out.println("No se ha podido crear el objeto JSON");
+        }
+        JSONObject jsonobjeto = client.postGetJson(activityJSON,"statsByDate");
+
+        JSONArray arrayJson = jsonobjeto.getJSONArray("activities");
+
+        for (int i = 0; i<arrayJson.length();i++){
+            JSONObject objeto = arrayJson.getJSONObject(i);
+            Actividad act = new Actividad();
+            act.setSport(objeto.getString("sport"));
+            act.setBegindate(Integer.toString(objeto.getInt("begindate")));
+            act.setEnddate(Integer.toString(objeto.getInt("enddate")));
+            act.setUserid(objeto.getInt("user"));
+
+            actividades.add(act);
+
+        }
+
+        return actividades;
     }
 }
